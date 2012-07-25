@@ -213,6 +213,23 @@ body {
 	text-transform:uppercase
 }
 
+/* Login form */
+#login-form input {
+	width:250px;
+	margin:0 0 20px;
+	padding:10px;
+}
+#login-form input[type=submit] {
+	padding:10px 15px;
+	font-size:14px;
+	text-transform:uppercase;
+	background:#7BC47B;
+	color:#fff;
+	border:none;
+}
+#login-form input[type=submit]:focus {
+	background:#333
+}	
 
 /* ==|== non-semantic helper classes ======================================== */
 .ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
