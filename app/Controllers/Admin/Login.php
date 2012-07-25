@@ -1,13 +1,4 @@
 <?php
-/**
- * Controller for login page. Using SHA256 for password hashing.
- *
- * @author  Rizqy Hidayat <rizqy22@gmail.com>
- * @link    http://hirizh.name/
- * @license http://www.opensource.org/licenses/bsd-license.php
- * @since   version 1.0.0
- * @package Controller
- */
 namespace Controllers\Admin;
 use Resources, Models;
 
@@ -22,7 +13,6 @@ class Login extends Resources\Controller {
 	}
 
 	public function index(){
-		// TODO: style the login page
 		
 		// If user not authenticated
 		if( ! $this->session->getValue('authed') ){
@@ -48,7 +38,9 @@ class Login extends Resources\Controller {
 					}
 				}
 			}
-			$this->output('admin/login');
+			$data['title'] = 'Login';
+			
+			$this->output('admin/login', $data);
 		} else {
 			// If user has been loged in
 			$this->redirect('admin');
