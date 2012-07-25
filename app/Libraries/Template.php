@@ -27,11 +27,12 @@ class Template {
 		$this->configMain = Resources\Config::main();
 		$this->uri = new Resources\Uri;
 		$this->settings = new Models\Settings;
+		
+		$this->themeName = $this->settings->all()->theme;
 	}
 
 	public function parse( $viewFile, $data = array(), $isReturnValue = false ){
-		$themeName = $this->settings->all()->theme;
-		$themePath = 'themes/' . $themeName . '/' . $viewFile;
+		$themePath = 'themes/' . $this->themeName . '/' . $viewFile;
 
 		try{
 			if( ! file_exists($this->viewFile = $themePath.'.php') )
@@ -68,5 +69,13 @@ class Template {
 
 	public function location($location = ''){
 		return $this->uri->baseUri . $this->configMain['indexFile'] . $location;
+	}
+	
+	public function themeUri($location = ''){
+		return $this->uri->baseUri . $this->configMain['indexFile'] . 'themes/' . $this->themeName . '/' . $location;
+	}
+	
+	public function getPart($location = ''){
+		include_once $this->themeUri . $location;
 	}
 }
