@@ -4,7 +4,7 @@ return array(
 	'defaultController' => 'Home',
 
 	// Just put null value if you has enable .htaccess file
-	'indexFile' => INDEX_FILE . '/',
+	'indexFile' => '',
 
 	'module' => array(
 		'path' => GEAR,
@@ -20,5 +20,6 @@ return array(
 			'class' => 'Home',
 			'method' => 'post_permalink'
 		),
+		'method' => 'alias',
 	),
 );
