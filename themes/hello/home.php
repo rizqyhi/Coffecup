@@ -21,6 +21,7 @@
     <header class="hero-unit masthead">
 <h1>Kopi Bean CMS</h1>
 <p>Simple CMS for art-directed blog.</p>
+<?php echo $this->themeUri(); ?>
 </header>
 
 <table class="table">
@@ -34,4 +35,12 @@
 </tbody>
 </table>
 
+<?php if($pageNav):?>
+                <ul>
+                    <?php foreach($pageNav as $paging):?>
+                        <li><?php echo $paging;?></li>
+                    <?php endforeach;?>
+                </ul>
+                <?php endif;?>
+                
 <?php include 'footer.php'; ?>
