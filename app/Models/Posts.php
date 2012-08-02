@@ -1,13 +1,4 @@
 <?php
-/**
- * Models for querying the posts from database.
- *
- * @author  Rizqy Hidayat <rizqy22@gmail.com>
- * @link    http://hirizh.name/
- * @license http://www.opensource.org/licenses/bsd-license.php
- * @since   version 1.0.0
- * @package Models
- */
 namespace Models;
 use Resources, Libraries;
 
@@ -18,8 +9,15 @@ class Posts {
     }
     
     // List all posts
-    public function all(){
-    	return $this->db->select()->from('posts')->orderBy('created', 'DESC')->getAll(); 
+    public function all($page=1, $limit=5){
+    	$offset = ($limit * $page) - $limit;
+    	
+    	return $this->db->select()->from('posts')->orderBy('created', 'DESC')->limit($limit, $offset)->getAll(); 
+    }
+    
+    // Total posts
+    public function total(){
+    	return $this->db->select('COUNT(ID)')->from('posts')->getVar(); 
     }
     
     // get single post based on ID
